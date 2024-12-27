@@ -9,9 +9,7 @@ from catalog.forms import ContactForm
 
 def home_page(request):
     """
-    Принимает и обрабатывает параметр request из шаблона home.html.
-    :param request:
-    :return:
+    Определяет отображение страницы home.html.
     """
     recent_products = Product.objects.filter(category__name="Продукты")
     for product in recent_products:
@@ -21,27 +19,10 @@ def home_page(request):
     return render(request, "home.html", context={"data": recent_products})
 
 
-# def contacts_page(request):
-#     """
-#     Принимает и обрабатывает параметр request из шаблона contacts.html.
-#     :param request:
-#     :return:
-#     """
-#     if request.method == "POST":
-#         name = request.POST.get("name")
-#         phone = request.POST.get("phone")
-#         message = request.POST.get("message")
-#         return HttpResponse(
-#             "Спасибо %s! Ваш телефон - %s. Ваше сообщение  - %s."
-#             % (name, phone, message)
-#         )
-#
-#     return render(request, "contacts.html")
-
-
-# Перепишем контроллер по-другому. Вместо HttpResponse просто выведем страницу success.html с сообщением.
 def contacts_page(request):
-    """Принимает и обрабатывает параметр request из шаблона contacts.html."""
+    """
+    Определяет отображение страницы contacts.html.
+    """
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -50,3 +31,11 @@ def contacts_page(request):
     else:
         form = ContactForm()
     return render(request, "contacts.html", {"form": form})
+
+
+def product_details_controller(request, product_id: int = 1):
+    """
+    Определяет отображение детализации (характеристик) продукта.
+    """
+    product = Product.objects.get(id=product_id)
+    return render(request, "product_details.html", context={"product": product})

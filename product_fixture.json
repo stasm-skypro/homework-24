@@ -3,6 +3,19 @@
     "model": "catalog.product",
     "pk": 2,
     "fields": {
+        "product": "Молоко",
+        "description": "Молоко коровье натуральное пастеризованное 3%",
+        "image": "",
+        "category": 1,
+        "price": 150.0,
+        "created_at": "2024-12-24",
+        "changed_at": "2024-12-24"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
         "product": "Хлеб",
         "description": "Хлеб белый стандартный",
         "image": "",
@@ -20,7 +33,7 @@
         "description": "Яйца 1С",
         "image": "",
         "category": 1,
-        "price": 500.0,
+        "price": 100.0,
         "created_at": "2024-12-24",
         "changed_at": "2024-12-24"
     }
@@ -59,7 +72,7 @@
         "description": "Термобельё утеплённое зимнее",
         "image": "",
         "category": 2,
-        "price": 779990.0,
+        "price": 7990.0,
         "created_at": "2024-12-24",
         "changed_at": "2024-12-24"
     }
@@ -68,8 +81,8 @@
     "model": "catalog.product",
     "pk": 7,
     "fields": {
-        "product": "Шорты мужские, размер 50",
-        "description": "Шорты мужские, размер 50",
+        "product": "Samsung Galaxy S23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
         "image": "",
         "category": 3,
         "price": 180000.0,
@@ -81,8 +94,8 @@
     "model": "catalog.product",
     "pk": 8,
     "fields": {
-        "product": "Шорты мужские, размер 50",
-        "description": "Шорты мужские, размер 50",
+        "product": "Iphone 15",
+        "description": "512GB, Gray space",
         "image": "",
         "category": 3,
         "price": 210000.0,
@@ -94,8 +107,8 @@
     "model": "catalog.product",
     "pk": 9,
     "fields": {
-        "product": "Шорты мужские, размер 50",
-        "description": "Шорты мужские, размер 50",
+        "product": "Xiaomi Redmi Note 11",
+        "description": "1024GB, Синий",
         "image": "",
         "category": 3,
         "price": 31000.0,

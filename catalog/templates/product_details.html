@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Описание продукта</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"
+</head>
+<body>
+
+<div class="container-lg-fluid mt-5" style="margin-left: 20px;">
+    <h2 class="mb-4">{{ product.product }}</h2>
+    <p>Описание: {{ product.description }} </p>
+    <p>Цена: {{ product.price }}</p>
+    <p>Дата производства: {{ product.created_at }}</p>
+    <p>Категория: {{ product.category.name }}</p>
+</div>
+
+<!-- Подключение Bootstrap JS -->
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
