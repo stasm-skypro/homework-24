@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Описание продукта</title>
     <!-- Подключение Bootstrap CSS -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css"
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 </head>
 <body>
 
-<div class="container-lg-fluid mt-5" style="margin-left: 20px;">
-    <h2 class="mb-4">{{ product.product }}</h2>
-    <p>Описание: {{ product.description }} </p>
-    <p>Цена: {{ product.price }}</p>
-    <p>Дата производства: {{ product.created_at }}</p>
-    <p>Категория: {{ product.category.name }}</p>
+<!-- Описание продукта -->
+<div class="container-lg-fluid mt-5 text-primary"
+     style="margin-left: 100px; background-color: #f8f9fa; width: 600px; padding: 10px;">
+    <div class="container-lg-fluid text-body-secondary"
+         style="margin-left: 5px; background-color: white; width: 570px; padding: 5px; border-radius: 15px;">
+        <div class="container-fluid text-primary">
+            <h2 class="mb-4">{{product.product}}</h2>
+        </div>
+        <p>Описание: {{product.description}}</p>
+        <p>Цена: {{product.price}} руб</p>
+        <p>Дата производства: {{product.created_at|date:"d.m.Y"}}</p>
+        <p>Категория: {{product.category.name}}</p>
+    </div>
 </div>
 
 <!-- Подключение Bootstrap JS -->
