@@ -11,12 +11,8 @@ def home_page(request):
     """
     Определяет отображение страницы home.html.
     """
-    recent_products = Product.objects.filter(category__name="Продукты")
-    for product in recent_products:
-        print("Последние %s товаров:" % len(recent_products))
-        print(product)
-
-    return render(request, "home.html", context={"data": recent_products})
+    products_list = Product.objects.all().order_by("id")
+    return render(request,"home.html", context={"products_list": products_list})
 
 
 def contacts_page(request):
@@ -33,7 +29,7 @@ def contacts_page(request):
     return render(request, "contacts.html", {"form": form})
 
 
-def product_details_controller(request, product_id: int = 1):
+def product_details_page(request, product_id: int = 1):
     """
     Определяет отображение детализации (характеристик) продукта.
     """
