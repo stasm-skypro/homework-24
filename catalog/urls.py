@@ -13,5 +13,5 @@ urlpatterns = [
     path("", home_view, name="home.html"),
     path("contacts/", contacts_view, name="contacts.html"),
     path("product_details/<int:product_id>", product_details_view, name="product_details.html"),
-    path("add_product/", add_product_view, name="add_product.html")
+    path("add_product/", add_product_view, name="add_product.html"),
 ]

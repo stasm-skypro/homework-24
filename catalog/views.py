@@ -7,13 +7,12 @@ from catalog.models import Product
 from catalog.forms import ContactForm, ProductForm
 
 
-
 def home_view(request):
     """
     Определяет отображение страницы home.html.
     """
     products_list = Product.objects.all().order_by("id")
-    return render(request,"home.html", context={"products_list": products_list})
+    return render(request, "home.html", context={"products_list": products_list})
 
 
 def contacts_view(request):
