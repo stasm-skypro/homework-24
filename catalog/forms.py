@@ -1,6 +1,7 @@
 """
 Формы для ввода данных.
 """
+
 from django import forms
 from django.forms import ClearableFileInput
 
@@ -8,6 +9,8 @@ from catalog.models import Contact, Product
 
 
 class ContactForm(forms.ModelForm):
+    """Класс для определения формы ввода для шаблона contacts."""
+
     class Meta:
         model = Contact
         fields = ["first_name", "phone", "message"]
@@ -19,6 +22,8 @@ class ContactForm(forms.ModelForm):
 
 
 class ProductForm(forms.ModelForm):
+    """Кдасс для определния формы ввода для шаблона add_product."""
+
     class Meta:
         model = Product
         fields = ["product", "description", "image", "category", "price", "created_at", "changed_at"]
