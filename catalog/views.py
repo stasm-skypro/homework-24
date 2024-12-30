@@ -4,44 +4,21 @@
 
 from django.shortcuts import render
 from catalog.models import Product
-from catalog.forms import ContactForm
+from catalog.forms import ContactForm, ProductForm
 
 
-def home_page(request):
+def home_view(request):
     """
-    Принимает и обрабатывает параметр request из шаблона home.html.
-    :param request:
-    :return:
+    Определяет отображение страницы home.html.
     """
-    recent_products = Product.objects.filter(category__name="Продукты")
-    for product in recent_products:
-        print("Последние %s товаров:" % len(recent_products))
-        print(product)
-
-    return render(request, "home.html", context={"data": recent_products})
+    products_list = Product.objects.all().order_by("id")
+    return render(request, "home.html", context={"products_list": products_list})
 
 
-# def contacts_page(request):
-#     """
-#     Принимает и обрабатывает параметр request из шаблона contacts.html.
-#     :param request:
-#     :return:
-#     """
-#     if request.method == "POST":
-#         name = request.POST.get("name")
-#         phone = request.POST.get("phone")
-#         message = request.POST.get("message")
-#         return HttpResponse(
-#             "Спасибо %s! Ваш телефон - %s. Ваше сообщение  - %s."
-#             % (name, phone, message)
-#         )
-#
-#     return render(request, "contacts.html")
-
-
-# Перепишем контроллер по-другому. Вместо HttpResponse просто выведем страницу success.html с сообщением.
-def contacts_page(request):
-    """Принимает и обрабатывает параметр request из шаблона contacts.html."""
+def contacts_view(request):
+    """
+    Определяет отображение страницы contacts.html.
+    """
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -50,3 +27,25 @@ def contacts_page(request):
     else:
         form = ContactForm()
     return render(request, "contacts.html", {"form": form})
+
+
+def product_details_view(request, product_id: int = 1):
+    """
+    Определяет отображение детализации (характеристик) продукта.
+    """
+    product = Product.objects.get(id=product_id)
+    return render(request, "product_details.html", context={"product": product})
+
+
+def add_product_view(request):
+    """
+    Определяет отображение добавления продукта.
+    """
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()  # Сохраняем данные в таблицу catalog_products
+            return render(request, "success.html")
+    else:
+        form = ProductForm()
+    return render(request, "add_product.html", {"form": form})
